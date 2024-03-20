@@ -1,0 +1,15 @@
+/Users/juliamelnykovych/RiderProjects/assignment4/obj/Debug/net8.0/assignment4.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juliamelnykovych/RiderProjects/assignment4/obj/Debug/net8.0/assignment4.AssemblyInfoInputs.cache
+/Users/juliamelnykovych/RiderProjects/assignment4/obj/Debug/net8.0/assignment4.AssemblyInfo.cs
+/Users/juliamelnykovych/RiderProjects/assignment4/obj/Debug/net8.0/assignment4.csproj.CoreCompileInputs.cache
+/Users/juliamelnykovych/RiderProjects/assignment4/obj/Debug/net8.0/assignment4.sourcelink.json
+/Users/juliamelnykovych/RiderProjects/assignment4/bin/Debug/net8.0/assignment4
+/Users/juliamelnykovych/RiderProjects/assignment4/bin/Debug/net8.0/assignment4.deps.json
+/Users/juliamelnykovych/RiderProjects/assignment4/bin/Debug/net8.0/assignment4.runtimeconfig.json
+/Users/juliamelnykovych/RiderProjects/assignment4/bin/Debug/net8.0/assignment4.dll
+/Users/juliamelnykovych/RiderProjects/assignment4/bin/Debug/net8.0/assignment4.pdb
+/Users/juliamelnykovych/RiderProjects/assignment4/obj/Debug/net8.0/assignment4.dll
+/Users/juliamelnykovych/RiderProjects/assignment4/obj/Debug/net8.0/refint/assignment4.dll
+/Users/juliamelnykovych/RiderProjects/assignment4/obj/Debug/net8.0/assignment4.pdb
+/Users/juliamelnykovych/RiderProjects/assignment4/obj/Debug/net8.0/assignment4.genruntimeconfig.cache
+/Users/juliamelnykovych/RiderProjects/assignment4/obj/Debug/net8.0/ref/assignment4.dll
