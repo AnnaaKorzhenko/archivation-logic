@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\!uni\\algorithms\\projects\\assignment4\\assignment4\\assignment4\\assignment4.csproj": {}
+    "/Users/juliamelnykovych/RiderProjects/assignment4/assignment4.csproj": {}
   },
   "projects": {
-    "C:\\!uni\\algorithms\\projects\\assignment4\\assignment4\\assignment4\\assignment4.csproj": {
+    "/Users/juliamelnykovych/RiderProjects/assignment4/assignment4.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\!uni\\algorithms\\projects\\assignment4\\assignment4\\assignment4\\assignment4.csproj",
+        "projectUniqueName": "/Users/juliamelnykovych/RiderProjects/assignment4/assignment4.csproj",
         "projectName": "assignment4",
-        "projectPath": "C:\\!uni\\algorithms\\projects\\assignment4\\assignment4\\assignment4\\assignment4.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\!uni\\algorithms\\projects\\assignment4\\assignment4\\assignment4\\obj\\",
+        "projectPath": "/Users/juliamelnykovych/RiderProjects/assignment4/assignment4.csproj",
+        "packagesPath": "/Users/juliamelnykovych/.nuget/packages/",
+        "outputPath": "/Users/juliamelnykovych/RiderProjects/assignment4/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/juliamelnykovych/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\DELL\\.dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/Users/juliamelnykovych/.dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

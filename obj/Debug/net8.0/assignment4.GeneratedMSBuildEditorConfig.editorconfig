@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = assignment4
-build_property.ProjectDir = C:\!uni\algorithms\projects\assignment4\assignment4\assignment4\
+build_property.ProjectDir = /Users/juliamelnykovych/RiderProjects/assignment4/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
