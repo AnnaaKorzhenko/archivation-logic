@@ -1,29 +1,114 @@
-﻿// go through the file and create a dict with characters as keys and frequency of appearing as values
+﻿var textFile = "/Users/juliamelnykovych/RiderProjects/assignment4/kse.txt";
+var text = File.ReadAllText(textFile);
+
 var dictOfChars = new Dictionary<char, int>();
-var allText = File.ReadAllLines("../../../kse.txt");
-foreach (string str in allText)
+foreach (char ch in text)
 {
-    foreach (char ch in str)
+    if (dictOfChars.ContainsKey(ch))
     {
-        if (dictOfChars.ContainsKey(ch))
-        {
-            dictOfChars[ch] += 1;
-        }
-        else
-        {
-            dictOfChars[ch] = 1;
-        }
+        dictOfChars[ch] += 1;
+    }
+    else
+    {
+        dictOfChars[ch] = 1;
     }
 }
 
-foreach (var ch in dictOfChars.Keys)
+var minHeap = new SortedSet<Node>();
+foreach (var data in dictOfChars)
 {
-    Console.WriteLine($"{ch} : {dictOfChars[ch]}");
+    var node = new Node()
+    {
+        Symbol = data.Key.ToString(),
+        Frequency = data.Value,
+        LeftChild = null,
+        RightChild = null
+    };
+    minHeap.Add(node);
 }
-// build a tree with those nodes of key-value frequencies and links to r-child and l-child
 
-// go through the tree and create a table with code for each character in the tree
+while (minHeap.Count > 1)
+{
+    var min1 = GetMinNode(minHeap);
+    var min2 = GetMinNode(minHeap);
 
-// translate the text into this code
+    var commonNode = new Node()
+    {
+        Symbol = min1.Symbol.Replace("\n", "\\n") + "_" + min2.Symbol.Replace("\n", "\\n"),
+        Frequency = min1.Frequency + min2.Frequency,
+        LeftChild = min1,
+        RightChild = min2
+    };
+    minHeap.Add(commonNode);
+}
 
-// add a decoding algorithm with a table in the end like %A:1%B:100%C:1000%D:100000
+
+var root = minHeap.Min;
+
+var letterFreq = new Dictionary<char, int>();
+foreach (var pair in dictOfChars)
+{
+    var path = root.Search(pair.Key.ToString(), new List<int>());
+    Console.Write($"{pair.Key.ToString().Replace("\n", "\\n").Replace(" ", "SPACE")}\t");
+    if (path != null)
+    {
+        foreach (var bit in path)
+        {
+            Console.Write(bit);
+        }
+    }
+    Console.WriteLine();
+}
+
+static Node GetMinNode(SortedSet<Node> minHeap)
+{
+    var minNode = minHeap.Min;
+    minHeap.Remove(minNode);
+    return minNode;
+}
+public class Node : IComparable<Node>
+{
+    public string Symbol;
+    public int Frequency;
+    public Node LeftChild;
+    public Node RightChild;
+
+    public int CompareTo(Node other)
+    {
+        return Frequency.CompareTo(other.Frequency);
+    }
+
+    public List<int> Search(string symbol, List<int> prevPath)
+    {
+        if (RightChild == null && LeftChild == null)
+        {
+            if (symbol == this.Symbol)
+            {
+                return prevPath;
+            }
+            return null;
+        }
+
+        List<int> path = null;
+        if (LeftChild != null)
+        {
+            var leftPath = new List<int>(prevPath); 
+            leftPath.Add(0); 
+            path = LeftChild.Search(symbol, leftPath);
+        }
+
+        if (path != null)
+        {
+            return path;
+        }
+
+        if (RightChild != null)
+        {
+            var rightPath = new List<int>(prevPath);
+            rightPath.Add(1);
+            path = RightChild.Search(symbol, rightPath);
+        }
+        return path;
+    }
+}
+
