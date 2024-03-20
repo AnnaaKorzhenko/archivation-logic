@@ -14,23 +14,16 @@ foreach (char ch in text)
     }
 }
 
-var minHeap = new SortedSet<Node>();
+Heap minHeap = new Heap();
 foreach (var data in dictOfChars)
 {
-    var node = new Node()
-    {
-        Symbol = data.Key.ToString(),
-        Frequency = data.Value,
-        LeftChild = null,
-        RightChild = null
-    };
-    minHeap.Add(node);
+    minHeap.Insert(new Node(data.Key, data.Value));
 }
 
-while (minHeap.Count > 1)
+while (minHeap.Size > 1)
 {
-    var min1 = GetMinNode(minHeap);
-    var min2 = GetMinNode(minHeap);
+    var min1 = minHeap.ExtractMin();
+    var min2 = minHeap.ExtractMin();
 
     var commonNode = new Node()
     {
@@ -39,11 +32,11 @@ while (minHeap.Count > 1)
         LeftChild = min1,
         RightChild = min2
     };
-    minHeap.Add(commonNode);
+    minHeap.Insert(commonNode);
 }
 
+var root = minHeap.ExtractMin();
 
-var root = minHeap.Min;
 
 var letterFreq = new Dictionary<char, int>();
 foreach (var pair in dictOfChars)
@@ -72,7 +65,13 @@ public class Node : IComparable<Node>
     public int Frequency;
     public Node LeftChild;
     public Node RightChild;
+    public Node() { }
 
+    public Node(char symbol, int frequency)
+    {
+        Symbol = symbol.ToString();
+        Frequency = frequency;
+    }
     public int CompareTo(Node other)
     {
         return Frequency.CompareTo(other.Frequency);
@@ -109,6 +108,79 @@ public class Node : IComparable<Node>
             path = RightChild.Search(symbol, rightPath);
         }
         return path;
+    }
+}
+public class Heap
+{
+    private readonly List<Node> heap;
+
+    public int Size => heap.Count;
+
+    public Heap()
+    {
+        heap = new List<Node>();
+    }
+
+    private int Parent(int index) => (index - 1) / 2;
+    private int LeftChild(int index) => 2 * index + 1;
+    private int RightChild(int index) => 2 * index + 2;
+
+    private void Swap(int i, int j)
+    {
+        (heap[i], heap[j]) = (heap[j], heap[i]);
+    }
+
+    private void HeapifyUp(int index)
+    {
+        while (index > 0 && heap[index].Frequency < heap[Parent(index)].Frequency)
+        {
+            Swap(index, Parent(index));
+            index = Parent(index);
+        }
+    }
+
+    private void HeapifyDown(int index)
+    {
+        int minIndex = index;
+        int leftChild = LeftChild(index);
+        int rightChild = RightChild(index);
+
+        if (leftChild < Size && heap[leftChild].Frequency < heap[minIndex].Frequency)
+        {
+            minIndex = leftChild;
+        }
+
+        if (rightChild < Size && heap[rightChild].Frequency < heap[minIndex].Frequency)
+        {
+            minIndex = rightChild;
+        }
+
+        if (index != minIndex)
+        {
+            Swap(index, minIndex);
+            HeapifyDown(minIndex);
+        }
+    }
+
+    public void Insert(Node value)
+    {
+        heap.Add(value);
+        HeapifyUp(Size - 1);
+    }
+
+    public Node ExtractMin()
+    {
+        if (Size == 0)
+        {
+            throw new Exception("Heap is empty. Cannot extract minimum element.");
+        }
+
+        var min = heap[0];
+        heap[0] = heap[Size - 1];
+        HeapifyDown(0);
+
+        heap.RemoveAt(Size - 1);
+        return min;
     }
 }
 
